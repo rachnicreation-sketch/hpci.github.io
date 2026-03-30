@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPCI-SARL — Hygiène Prodige Com International</title>
+<meta name="description" content="Spécialiste du nettoyage industriel, de la maintenance et de l'assainissement en Afrique centrale et de l'Ouest.">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── HERO ACCUEIL ── */
+.hero {
+  position: relative; min-height: 600px; display: flex;
+  align-items: center; overflow: hidden; background: var(--navy);
+}
+.hero-bg-img {
+  position: absolute; inset: 0;
+  /* ═══════════════════════════════════════════════════════════
+     IMAGE HERO PRINCIPALE
+     Remplacer le gradient par votre photo de fond :
+     background: url('images/hero/hero-principal.jpg') center/cover no-repeat;
+     Taille recommandée : 1920×900px
+     Formats acceptés : .jpg .webp
+     ═══════════════════════════════════════════════════════════ */
+  background: linear-gradient(135deg, #0a1628 0%, #1a3a6b 50%, #0d2a4e 100%);
+}
+.hero-overlay { position: absolute; inset: 0; background: rgba(10,22,40,.72); }
+.hero-pattern { position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,.015) 40px, rgba(255,255,255,.015) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,.015) 40px, rgba(255,255,255,.015) 41px); }
+.hero-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--accent); }
+.hero-deco { position: absolute; right: -80px; top: -80px; width: 600px; height: 600px; border-radius: 50%; border: 1px solid rgba(255,255,255,.06); pointer-events: none; }
+.hero-deco2 { position: absolute; right: 60px; bottom: -120px; width: 400px; height: 400px; border-radius: 50%; border: 1px solid rgba(232,160,32,.12); pointer-events: none; }
+
+.hero-content { position: relative; max-width: 1280px; margin: 0 auto; padding: 90px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; width: 100%; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,160,32,.15); border: 1px solid rgba(232,160,32,.3); color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 24px; }
+.hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+.hero h1 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: clamp(2.4rem, 4.5vw, 3.8rem); line-height: 1.05; color: var(--white); letter-spacing: -0.02em; margin-bottom: 24px; }
+.hero h1 em { color: var(--accent); font-style: normal; display: block; }
+.hero > .hero-content > .hero-text > p { color: #8fa3bf; font-size: 1.05rem; line-height: 1.7; margin-bottom: 36px; font-weight: 300; max-width: 480px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: rgba(255,255,255,.06); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); }
+.stat-card { background: rgba(255,255,255,.03); padding: 32px 28px; text-align: center; transition: background .2s; border: 1px solid rgba(255,255,255,.05); }
+.stat-card:hover { background: rgba(255,255,255,.07); }
+.stat-number { font-family: 'Barlow Condensed', sans-serif; font-size: 3rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 0.8rem; color: #7a93b0; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+
+/* ── ABOUT ── */
+.about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.about-visual { position: relative; }
+.about-img {
+  width: 100%; aspect-ratio: 4/3; border-radius: 8px; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  /* ═══════════════════════════════════════════════════════════
+     IMAGE À PROPOS — SECTION ACCUEIL
+     Remplacer le background gradient par :
+     background: url('images/hero/about-home.jpg') center/cover no-repeat;
+     Taille recommandée : 800×600px
+     ═══════════════════════════════════════════════════════════ */
+  background: linear-gradient(135deg, var(--blue) 0%, var(--navy) 100%);
+  position: relative;
+}
+.about-img-inner { position: relative; text-align: center; color: white; padding: 40px; }
+.about-img-icon { width: 80px; height: 80px; background: rgba(232,160,32,.2); border: 2px solid rgba(232,160,32,.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem; margin: 0 auto 20px; }
+.about-img-inner h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--accent); margin-bottom: 10px; }
+.about-img-inner p { font-size: 0.9rem; color: rgba(255,255,255,.7); line-height: 1.6; }
+.about-float { position: absolute; bottom: -20px; right: -20px; background: var(--accent); color: var(--navy); padding: 20px 24px; border-radius: 8px; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.8rem; line-height: 1; box-shadow: 0 8px 30px rgba(232,160,32,.4); }
+.about-float small { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; font-family: 'Barlow', sans-serif; }
+.about-text .section-desc { max-width: 100%; margin-bottom: 16px; }
+.highlights { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 24px 0 32px; }
+.highlights li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.92rem; color: var(--text); line-height: 1.5; }
+.highlights li::before { content: '✓'; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--green); color: white; border-radius: 50%; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+/* ── SERVICES ── */
+.services { background: var(--light); }
+.services-header { text-align: center; margin-bottom: 56px; }
+.services-header .section-desc { margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.service-card { background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: all .3s; position: relative; }
+.service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--blue); transform: scaleX(0); transition: transform .3s; transform-origin: left; }
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(10,22,40,.1); border-color: transparent; }
+.service-card:hover::after { transform: scaleX(1); }
+.service-thumb {
+  width: 100%; height: 180px; overflow: hidden; position: relative;
+  /* ═══════════════════════════════════════════════════════════
+     IMAGE VIGNETTE SERVICE (remplacée dans chaque carte)
+     background: url('images/services/[nom-service].jpg') center/cover no-repeat;
+     Taille recommandée : 600×300px
+     ═══════════════════════════════════════════════════════════ */
+  background: linear-gradient(135deg, var(--blue), var(--navy));
+  display: flex; align-items: center; justify-content: center;
+}
+.service-thumb-icon { font-size: 3rem; opacity: .7; }
+.service-body { padding: 28px; }
+.service-body h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.15rem; color: var(--navy); margin-bottom: 10px; line-height: 1.25; }
+.service-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 18px; }
+.service-link { font-size: 0.82rem; font-weight: 700; color: var(--blue); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 6px; transition: gap .2s; }
+.service-link:hover { gap: 10px; }
+
+/* ── ENGAGEMENTS BAND ── */
+.engagements { background: var(--navy); }
+.engage-header { text-align: center; margin-bottom: 56px; }
+.engage-header .section-label { color: var(--accent); }
+.engage-header .section-title { color: var(--white); }
+.engage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.engage-item { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); padding: 40px 28px; text-align: center; transition: background .25s; }
+.engage-item:hover { background: rgba(255,255,255,.07); }
+.engage-num { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; color: var(--accent); text-transform: uppercase; margin-bottom: 16px; }
+.engage-icon { font-size: 2rem; margin-bottom: 16px; }
+.engage-item h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--white); margin-bottom: 10px; }
+.engage-item p { font-size: 0.83rem; color: #6b88a8; line-height: 1.6; }
+
+/* ── PARTENAIRES BAND ── */
+.partners-band { background: var(--light); padding: 60px 0; }
+.partners-label { text-align: center; color: var(--muted); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 32px; }
+.partners-logos {
+  display: flex; align-items: center; justify-content: center;
+  gap: 48px; flex-wrap: wrap;
+}
+.partner-logo {
+  /* ═══════════════════════════════════════════════════════════
+     LOGOS PARTENAIRES
+     Remplacer chaque div.partner-logo par :
+     <img src="images/partenaires/[nom-partenaire].png" alt="[Nom]" style="height:50px;filter:grayscale(1);opacity:.6;transition:all .3s;">
+     Au survol enlever le filtre : img:hover { filter:none; opacity:1; }
+     ═══════════════════════════════════════════════════════════ -->
+  width: 120px; height: 50px; background: var(--border); border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; color: var(--muted); letter-spacing: 0.06em;
+  opacity: .6; transition: opacity .2s;
+}
+.partner-logo:hover { opacity: 1; }
+
+/* ── IMPLANTATIONS ── */
+.implantations { background: var(--white); }
+.implant-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+.implant-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.implant-header { padding: 20px 24px; background: var(--blue); display: flex; align-items: center; gap: 12px; }
+.implant-header h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; color: var(--white); font-size: 1.05rem; letter-spacing: 0.03em; text-transform: uppercase; }
+.implant-body { padding: 24px; }
+.implant-row { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text); line-height: 1.5; margin-bottom: 10px; }
+.implant-row .ico { color: var(--blue); flex-shrink: 0; }
+.implant-row a { color: var(--blue); text-decoration: none; }
+.implant-row a:hover { text-decoration: underline; }
+
+/* ── ACTUALITES PREVIEW ── */
+.actus { background: var(--light); }
+.actus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.actu-card { background: var(--white); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: all .3s; }
+.actu-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(10,22,40,.1); }
+.actu-thumb {
+  width: 100%; height: 200px;
+  /* ═══════════════════════════════════════════════════════════
+     IMAGE ACTUALITÉ
+     background: url('images/actualites/[slug-article].jpg') center/cover no-repeat;
+     Taille recommandée : 800×400px
+     ═══════════════════════════════════════════════════════════ */
+  background: linear-gradient(135deg, var(--blue), var(--navy));
+  display: flex; align-items: center; justify-content: center; font-size: 2.5rem;
+}
+.actu-body { padding: 24px; }
+.actu-tag { display: inline-block; background: var(--light); color: var(--blue); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; margin-bottom: 12px; }
+.actu-body h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+.actu-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+.actu-meta { font-size: 0.78rem; color: #aab4c4; display: flex; align-items: center; gap: 8px; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; gap: 48px; padding: 64px 24px; }
+  .hero-stats { grid-template-columns: repeat(4, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .engage-grid { grid-template-columns: repeat(2, 1fr); }
+  .implant-grid { grid-template-columns: 1fr; }
+  .actus-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .engage-grid { grid-template-columns: 1fr; }
+  .actus-grid { grid-template-columns: 1fr; }
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+.hero-badge { animation: fadeUp .5s ease both; }
+.hero h1 { animation: fadeUp .5s .1s ease both; }
+.hero-content > .hero-text > p { animation: fadeUp .5s .2s ease both; }
+.hero-actions { animation: fadeUp .5s .3s ease both; }
+.hero-stats { animation: fadeUp .6s .4s ease both; }
+</style>
+</head>
+<body data-root="./">
+
+<!-- nav + footer injectés par components.js -->
+
+<!-- ════════════════════════════════════════
+     HERO PRINCIPAL
+     ════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-bar"></div>
+  <div class="hero-deco"></div>
+  <div class="hero-deco2"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">Nettoyant autrement depuis 2014</div>
+      <h1>L'Excellence du Nettoyage <em>Industriel & Professionnel</em></h1>
+      <p>HPCI-SARL offre des solutions d'entretien, de nettoyage industriel et d'assainissement de haute qualité en Afrique centrale et de l'Ouest — avec des équipements innovants et un personnel hautement qualifié.</p>
+      <div class="hero-actions">
+        <a href="pages/services.html" class="btn-primary">Découvrir nos services →</a>
+        <a href="pages/contact.html" class="btn-outline">Nous contacter</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number"><span class="count-up" data-target="10">0</span>+</div>
+        <div class="stat-label">Années d'expérience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span class="count-up" data-target="200">0</span>+</div>
+        <div class="stat-label">Employés qualifiés</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span class="count-up" data-target="15">0</span>+</div>
+        <div class="stat-label">Distinctions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><span class="count-up" data-target="500">0</span>+</div>
+        <div class="stat-label">Clients satisfaits</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     À PROPOS (aperçu)
+     ════════════════════════════════════════ -->
+<section class="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual anim">
+        <div class="about-img">
+          <!-- ═══ IMAGE À PROPOS — voir commentaire CSS ci-dessus ═══ -->
+          <div class="about-img-inner">
+            <div class="about-img-icon">🏭</div>
+            <h3>Hygiène Prodige Com International</h3>
+            <p>Spécialiste du nettoyage industriel, domestique et de l'assainissement environnemental en Afrique</p>
+          </div>
+        </div>
+        <div class="about-float">10+<small>Ans d'expérience</small></div>
+      </div>
+      <div class="about-text anim">
+        <span class="section-label">À propos de HPCI-SARL</span>
+        <h2 class="section-title">Une Entreprise au Service de la Propreté et de la Sécurité</h2>
+        <p class="section-desc">En « Nettoyant autrement », HPCI-SARL offre à sa clientèle un service efficient. Nous intervenons dans les divers segments du nettoyage : industriel, domestique, et l'assainissement de l'environnement.</p>
+        <p class="section-desc">Dotée d'équipements innovants de haute gamme, HPCI-SARL garantit une efficience effective et un personnel formé aux meilleurs standards internationaux.</p>
+        <ul class="highlights">
+          <li>Équipements industriels haute performance de dernière génération</li>
+          <li>Personnel formé, certifié et régulièrement perfectionné</li>
+          <li>Présence multi-pays : Congo, Côte d'Ivoire</li>
+          <li>Conformité aux normes HSE et environnementales</li>
+          <li>Intervention 7j/7 pour les urgences industrielles</li>
+        </ul>
+        <a href="pages/a-propos.html" class="btn-primary">En savoir plus →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     NOS SERVICES
+     ════════════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label">Nos domaines de compétence</span>
+      <h2 class="section-title">Une Large Variété de Services Professionnels</h2>
+      <p class="section-desc">De l'industrie pétrolière aux établissements de santé, nos équipes interviennent dans tous les secteurs avec rigueur et expertise.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card anim">
+        <div class="service-thumb" style="
+          /* ═════ IMAGE : images/services/nettoyage-industriel.jpg ═════ */
+          background: linear-gradient(135deg,#1a4480,#0a1628);">
+          <span class="service-thumb-icon">🏭</span>
+        </div>
+        <div class="service-body">
+          <h3>Nettoyage Industriel</h3>
+          <p>Élimination spécialisée des contaminants dans des environnements industriels pour assurer la propreté, la sécurité et le bon fonctionnement de vos installations.</p>
+          <a href="pages/service-nettoyage-industriel.html" class="service-link">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="service-card anim">
+        <div class="service-thumb" style="
+          /* ═════ IMAGE : images/services/maintenance.jpg ═════ */
+          background: linear-gradient(135deg,#0d3b6e,#1a4480);">
+          <span class="service-thumb-icon">⚙️</span>
+        </div>
+        <div class="service-body">
+          <h3>Maintenance Industrielle & Équipements</h3>
+          <p>Entretien spécialisé des installations industrielles et équipements pour assurer leur fonctionnement optimal, prolonger leur durée de vie et garantir la sécurité.</p>
+          <a href="pages/service-maintenance.html" class="service-link">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="service-card anim">
+        <div class="service-thumb" style="
+          /* ═════ IMAGE : images/services/nettoyage-pro.jpg ═════ */
+          background: linear-gradient(135deg,#155a8a,#0a1628);">
+          <span class="service-thumb-icon">🧹</span>
+        </div>
+        <div class="service-body">
+          <h3>Nettoyage Professionnel & Entretien</h3>
+          <p>Services experts assurant la propreté et la maintenance régulière, préservant l'esthétique, la fonctionnalité et la durabilité des espaces et installations.</p>
+          <a href="pages/service-nettoyage-pro.html" class="service-link">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="service-card anim">
+        <div class="service-thumb" style="
+          /* ═════ IMAGE : images/services/bio-nettoyage.jpg ═════ */
+          background: linear-gradient(135deg,#1a6b55,#0a2e22);">
+          <span class="service-thumb-icon">🏥</span>
+        </div>
+        <div class="service-body">
+          <h3>Bio Nettoyage en Milieu Hospitalier</h3>
+          <p>Technique de nettoyage respectueuse de l'environnement, utilisant des produits biologiques, pour maintenir un haut niveau d'hygiène dans les milieux hospitaliers.</p>
+          <a href="pages/service-bio-nettoyage.html" class="service-link">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="service-card anim">
+        <div class="service-thumb" style="
+          /* ═════ IMAGE : images/services/phytosanitaire.jpg ═════ */
+          background: linear-gradient(135deg,#2d5a1b,#0a1628);">
+          <span class="service-thumb-icon">🌿</span>
+        </div>
+        <div class="service-body">
+          <h3>Traitement Phytosanitaire & Assainissement</h3>
+          <p>Méthodes spécifiques pour éliminer les organismes nuisibles et maintenir un environnement sain, tout en préservant la biodiversité et les écosystèmes.</p>
+          <a href="pages/service-phytosanitaire.html" class="service-link">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="service-card anim">
+        <div class="service-thumb" style="
+          /* ═════ IMAGE : images/services/hse.jpg ═════ */
+          background: linear-gradient(135deg,#6b3a0a,#2d1a00);">
+          <span class="service-thumb-icon">👷</span>
+        </div>
+        <div class="service-body">
+          <h3>Mise à Disposition Personnel HSE</h3>
+          <p>Fourniture de professionnels en santé, sécurité et environnement pour garantir la conformité réglementaire et une gestion optimale des risques dans votre entreprise.</p>
+          <a href="pages/service-hse.html" class="service-link">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="service-card anim" style="grid-column: span 1;">
+        <div class="service-thumb" style="
+          /* ═════ IMAGE : images/services/engineering.jpg ═════ */
+          background: linear-gradient(135deg,#3a1a6b,#0a1628);">
+          <span class="service-thumb-icon">🔧</span>
+        </div>
+        <div class="service-body">
+          <h3>Engineering</h3>
+          <p>Conception, réalisation et optimisation de systèmes techniques, industriels ou mécaniques pour répondre à vos besoins spécifiques avec expertise et précision.</p>
+          <a href="pages/service-engineering.html" class="service-link">En savoir plus →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     NOS ENGAGEMENTS
+     ════════════════════════════════════════ -->
+<section class="engagements">
+  <div class="container">
+    <div class="engage-header">
+      <span class="section-label">Nos valeurs fondamentales</span>
+      <h2 class="section-title">Nos Engagements envers l'Excellence</h2>
+    </div>
+    <div class="engage-grid">
+      <div class="engage-item anim"><div class="engage-num">01</div><div class="engage-icon">🎯</div><h4>Qualité Irréprochable</h4><p>Chaque prestation est réalisée selon les standards les plus élevés, avec des contrôles qualité rigoureux à chaque étape.</p></div>
+      <div class="engage-item anim"><div class="engage-num">02</div><div class="engage-icon">🛡️</div><h4>Sécurité & HSE</h4><p>La santé, la sécurité et l'environnement sont au cœur de toutes nos interventions, sans compromis.</p></div>
+      <div class="engage-item anim"><div class="engage-num">03</div><div class="engage-icon">🌍</div><h4>Respect de l'Environnement</h4><p>Nos méthodes et produits sont choisis pour minimiser l'impact environnemental tout en maximisant l'efficacité.</p></div>
+      <div class="engage-item anim"><div class="engage-num">04</div><div class="engage-icon">⏱️</div><h4>Réactivité & Disponibilité</h4><p>Disponibles 7j/7 pour les urgences, nous garantissons une intervention rapide et efficace partout où vous en avez besoin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     LOGOS PARTENAIRES
+     ════════════════════════════════════════ -->
+<div class="partners-band">
+  <div class="container">
+    <p class="partners-label">Ils nous font confiance</p>
+    <div class="partners-logos">
+      <!-- ═══════════════════════════════════════════════════════════
+           LOGOS PARTENAIRES
+           Remplacer chaque div.partner-logo par :
+           <img src="images/partenaires/[nom].png" alt="[Nom partenaire]"
+                style="height:50px;filter:grayscale(1);opacity:.6;transition:all .3s;"
+                onmouseover="this.style.filter='none';this.style.opacity='1'"
+                onmouseout="this.style.filter='grayscale(1)';this.style.opacity='.6'">
+           ═══════════════════════════════════════════════════════════ -->
+      <div class="partner-logo">Partenaire 1</div>
+      <div class="partner-logo">Partenaire 2</div>
+      <div class="partner-logo">Partenaire 3</div>
+      <div class="partner-logo">Partenaire 4</div>
+      <div class="partner-logo">Partenaire 5</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     IMPLANTATIONS
+     ════════════════════════════════════════ -->
+<section class="implantations">
+  <div class="container">
+    <span class="section-label">Notre présence</span>
+    <h2 class="section-title">Nos Implantations en Afrique</h2>
+    <p class="section-desc">HPCI-SARL est présente dans trois villes stratégiques pour mieux vous servir en Afrique centrale et de l'Ouest.</p>
+    <div class="implant-grid">
+      <div class="implant-card anim">
+        <div class="implant-header"><span>🇨🇬</span><h3>Pointe-Noire — Congo</h3></div>
+        <div class="implant-body">
+          <div class="implant-row"><span class="ico">📍</span><span>Croisement Av. Agostino-Neto & Mgr. Godefroy PWATY, Ex Bât. CFCO, face au Restaurant le SILMANDE, Centre-ville</span></div>
+          <div class="implant-row"><span class="ico">📞</span><span><a href="tel:+242066652728">(+242) 06 665 27 28</a> / <a href="tel:+242055209188">(+242) 05 520 91 88</a></span></div>
+          <div class="implant-row"><span class="ico">✉️</span><a href="mailto:hygieneprodige@hpci-sarl.net">hygieneprodige@hpci-sarl.net</a></div>
+        </div>
+      </div>
+      <div class="implant-card anim">
+        <div class="implant-header"><span>🇨🇬</span><h3>Brazzaville — Congo</h3></div>
+        <div class="implant-body">
+          <div class="implant-row"><span class="ico">📍</span><span>Avenue Felix Eboué en face de l'ambassade de Russie, Centre-ville Brazzaville</span></div>
+          <div class="implant-row"><span class="ico">📞</span><a href="tel:+242044378055">(+242) 04 437 80 55</a></div>
+          <div class="implant-row"><span class="ico">✉️</span><a href="mailto:hygieneprodige.bzv@hpci-sarl.net">hygieneprodige.bzv@hpci-sarl.net</a></div>
+        </div>
+      </div>
+      <div class="implant-card anim">
+        <div class="implant-header"><span>🇨🇮</span><h3>Abidjan — Côte d'Ivoire</h3></div>
+        <div class="implant-body">
+          <div class="implant-row"><span class="ico">📍</span><span>Rue C20 - Marcellin Yacé, Cité des arts Cocody, Abidjan</span></div>
+          <div class="implant-row"><span class="ico">📞</span><span><a href="tel:+2252722240247">(+225) 27 22 24 02 47</a> / <a href="tel:+2250706046595">(+225) 07 06 04 65 95</a></span></div>
+          <div class="implant-row"><span class="ico">✉️</span><a href="mailto:info@hpci-sarl.net">info@hpci-sarl.net</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     ACTUALITÉS (aperçu)
+     ════════════════════════════════════════ -->
+<section class="actus" style="background:var(--light);">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:0;flex-wrap:wrap;gap:16px;">
+      <div>
+        <span class="section-label">Dernières nouvelles</span>
+        <h2 class="section-title">Actualités HPCI-SARL</h2>
+      </div>
+      <a href="pages/actualite.html" class="btn-primary" style="margin-bottom:16px;">Toutes les actualités →</a>
+    </div>
+    <div class="actus-grid">
+      <div class="actu-card anim">
+        <div class="actu-thumb" style="
+          /* ═════ IMAGE ACTU 1 : images/actualites/actu-1.jpg ═════ -->
+          background:linear-gradient(135deg,#1a4480,#0a1628);">📰</div>
+        <div class="actu-body">
+          <span class="actu-tag">Événement</span>
+          <h3>HPCI-SARL renforce sa présence à Brazzaville</h3>
+          <p>Notre équipe continue d'étendre ses activités pour mieux servir nos clients en République du Congo.</p>
+          <div class="actu-meta">📅 Janvier 2025 <a href="pages/actualite.html" style="color:var(--blue);font-weight:600;margin-left:auto;">Lire →</a></div>
+        </div>
+      </div>
+      <div class="actu-card anim">
+        <div class="actu-thumb" style="
+          /* ═════ IMAGE ACTU 2 : images/actualites/actu-2.jpg ═════ -->
+          background:linear-gradient(135deg,#2d8b57,#0a2e1a);">📋</div>
+        <div class="actu-body">
+          <span class="actu-tag">Certification</span>
+          <h3>Nouvelle certification HSE obtenue par HPCI-SARL</h3>
+          <p>HPCI-SARL reçoit une nouvelle distinction attestant de son engagement envers les normes HSE internationales.</p>
+          <div class="actu-meta">📅 Décembre 2024 <a href="pages/actualite.html" style="color:var(--blue);font-weight:600;margin-left:auto;">Lire →</a></div>
+        </div>
+      </div>
+      <div class="actu-card anim">
+        <div class="actu-thumb" style="
+          /* ═════ IMAGE ACTU 3 : images/actualites/actu-3.jpg ═════ -->
+          background:linear-gradient(135deg,#6b3a0a,#2d1a00);">🤝</div>
+        <div class="actu-body">
+          <span class="actu-tag">Partenariat</span>
+          <h3>HPCI-SARL signe un nouveau partenariat stratégique</h3>
+          <p>Un accord de collaboration renforce nos capacités d'intervention dans la sous-région Afrique Centrale.</p>
+          <div class="actu-meta">📅 Novembre 2024 <a href="pages/actualite.html" style="color:var(--blue);font-weight:600;margin-left:auto;">Lire →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="components.js"></script>
+<script>
+  injectNav('accueil');
+  injectFooter();
+
+  // Compteurs animés
+  function animateCounters() {
+    document.querySelectorAll('.count-up').forEach(el => {
+      const target = +el.dataset.target;
+      const step = target / (1800 / 16);
+      let current = 0;
+      const update = () => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current);
+        if (current < target) requestAnimationFrame(update);
+      };
+      update();
+    });
+  }
+  const statsObs = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { animateCounters(); statsObs.disconnect(); }
+  }, { threshold: 0.3 });
+  statsObs.observe(document.querySelector('.hero-stats'));
+</script>
+</body>
+</html>
